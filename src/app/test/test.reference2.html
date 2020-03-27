@@ -1,0 +1,125 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<form [formGroup]="testsgroup">
+<div formArrayName="tests">
+  <div *ngFor="let loop of testsgroup.get('tests').controls;index as i">
+    <!-- <div *ngFor="let question of ques;let i=index"> -->
+  <h1>{{rightanswer}} rightanswer</h1>
+  <h1>{{totalanswer}} totalanswer</h1>
+  <hr *ngIf="i>0">
+  <form [formGroupName]="i">
+    <!-- ;let loop of testsgroup.get('tests').controls -->
+                
+                  <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <button class="btn btn-link btn-acrd" > 
+                            <div class="display">
+                                <div class="float-left">{{i}}</div>
+                                <div class="float-left">.</div>
+                                <div class="float-right">{{questionset[i].question}}</div>
+                            </div> 
+                        </button>
+                    </div>
+                    <div class="form-group">
+                      <input type="text" name="input"  class="float-right" formControlName="input" [class.is-invalid]="loop.controls.input.invalid && loop.controls.input.touched">
+                      <div *ngIf="loop.controls.input.invalid && loop.controls.input.touched">
+                            <small class="text-danger" *ngIf="loop.controls.input.errors.required">shuld be filled</small>
+                            <small class="text-danger" *ngIf="loop.controls.input.errors.minlength"> min lenght of 5</small>
+                            <small class="text-danger" *ngIf="loop.controls.input.errors.maxlength">max lenght of 7</small>
+                      </div>
+                    </div>
+
+                            <!-- this part is for testing purpose so try it  -->
+                      <!-- <div class="form-group" >
+                        <input type="text" name="input"  class="float-right" formControlName="input" [class.is-invalid]="formErrors.input" (blur)="logValidationErrors()">
+                        
+                          <span class="text-danger" *ngIf="formErrors.input">{{formErrors.input}}</span>
+                      </div> -->
+
+                    <!-- <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion"> -->
+                      <div class="form-group">
+                      <div class="card-body">
+                        <div class="float-md-right">
+                        <div class="display">
+                         
+                            <div class="float-left h6">1</div>
+                            <div class="float-left h6">.</div>
+                            <div class="float-right h6">{{questionset[i].a}}</div>
+                            <input type="checkbox" name="checkbox1"  class="float-right" formControlName="checkbox1" value="a"  [(ngModel)]="loop.controls.checkbox1.selected" (input)="selection($event.target.value)">
+                            <input type="checkbox" name="checkbox"  class="float-right" formControlName="checkbox" value=""  [(ngModel)]="loop.controls.checkbox.selected" (input)="selection($event.target.value)">
+
+                            {{select}}
+                            <!-- (input)="selected=$event.target.value" -->
+                            
+                            <!-- {{loop.controls.checkbox1.selected}} -->
+                            <!-- <span class="text-danger" *ngIf="loop.get('checkbox1').errors?.required && loop.get('checkbox1').touched">should be marked</span> -->
+                            <!-- (check1 && pca1[i+1]) || pca1[i] -->
+                            <!-- (check2 && pca2[i+1]) || pca2[i] -->
+                            <!-- (check3 && pca3[i+1]) || pca3[i] -->
+                            <!-- (check4 && pca4[i+1]) || pca4[i] -->
+                            <!-- (click)="check11();pc1()" [checked]="check1"
+                            (click)="check22();pc2()" [checked]="check2"
+                            (click)="check33();pc3()"  [checked]="check3"
+                            (click)="check44();pc4()" [checked]="check4" -->
+                        </div> 
+                        <div class="display">
+                            <div class="float-left h6">2</div>
+                            <div class="float-left h6" >.</div>
+                            <div class="float-right h6">{{questionset[i].b}}</div>
+                            <input type="checkbox" name="checkbox2"  class="float-right" formControlName="checkbox2"  value="b"   [(ngModel)]="loop.controls.checkbox2.selected" (input)="selection($event.target.value)">
+                            {{selected}}
+                            {{loop.controls.checkbox2.selected}}
+                        </div> 
+                        <div class="display">
+                            <div class="float-left h6">3</div>
+                            <div class="float-left h6">.</div>
+                            <div class="float-right h6">{{questionset[i].c}}</div>
+                            <input type="checkbox" name="checkbox3"  class="float-right" formControlName="checkbox3" value="c"  [(ngModel)]="loop.controls.checkbox3.selected" (input)="selection($event.target.value)">
+                        </div> 
+                        <div class="display">
+                            <div class="float-left h6">4</div>
+                            <div class="float-left h6">.</div>
+                            <div class="float-right h6">{{questionset[i].d}}</div>
+                            <input type="checkbox" name="checkbox4"  class="float-right float-bottom" formControlName="checkbox4" value="d" [(ngModel)]="loop.controls.checkbox4.selected" (input)="selection($event.target.value)" >
+                        </div>
+                      </div> 
+                      </div>
+                    </div>
+                  </div>
+                
+                
+                
+                  <!-- seperate for this one  -->
+                  <div class="card">
+                    <div class="card-header" id="headingTwo">
+                      <h5 class="mb-0">
+                      <button type="button" class="btn text-success bg-warning" name="submit" (click)="fillup();submitTest()"> 
+                            submit
+                        </button>
+                      </h5>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header" id="headingThree">
+                      <h5 class="mb-0">
+                        <button class="btn  float-left text-info bg-secondary"> 
+                          <!-- data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" -->
+                            prev
+                        </button>
+                        <button type="button" class="btn  float-right text-info bg-secondary"  (click)="addquestions();checkall()" > 
+                          <!-- [disabled]="loop.get('tests').invalid" -->
+                            next
+                        </button>
+                      </h5>
+                    </div>
+                  </div>
+  </form>
+
+</div>                    
+</div>
+</form>
+
+
+

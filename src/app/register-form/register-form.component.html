@@ -1,0 +1,126 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<form class="container register" [formGroup]="registerForm">
+                <div class="row">
+                    <div class="col-md-3 register-left">
+                        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+                        <h3>Welcome.</h3>
+                        <input type="submit" name="" value="Login"/><br/>
+                    </div>
+                    <div class="col-md-9 register-right">
+                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Tyro</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Home</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading">Apply as a Tyro</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="First Name *" value="" formControlName="firstname" [class.is-valid]="fname.invalid && fname.touched"/>
+                                             <small  class="text-danger" [class.d-none]="fname.valid || fname.untouched">First Name field is Required</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Last Name *" name="lastname" formControlName="lastname" [class.is-invalid]="lname.invalid && lname.touched" />
+                                            <small  class="text-danger" [class.d-none]="lname.valid || lname.untouched">Last Name field is Required</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Password *" value="" formControlName="password"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control"  placeholder="Confirm Password *" value="" name="confirmpassword" formControlName="confirmpassword" [class.is-invalid]="registerForm.errors?.crossval"/>
+                                            <small *ngIf="registerForm.errors?.crossval" class="text-danger">Mismatch</small>                                        </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="maxl">
+                                                <label class="radio inline"> 
+                                                    <input type="radio" value="male" name="gender" formControlName="gender">
+                                                    <span> Male </span> 
+                                                </label>
+                                                <label class="radio inline"> 
+                                                    <input type="radio" value="female" name="gender" formControlName="gender"> 
+                                                    <span>Female </span> 
+                                                </label>
+                                                <small [class.d-none]="registerForm.get('gender').valid && registerForm.get('gender').untouched" class="text-danger"></small>
+                                            </div>
+                                        </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Your Email *" value="" name="email" formControlName="email"  [class.is-invalid]="reqemail.invalid && reqemail.touched"/>
+                                            <div *ngIf="reqemail.invalid && reqemail.touched">
+                                                  <small *ngIf="reqemail.errors?.required" class="text-danger">Email should be filled</small>
+                                                  <small *ngIf="reqemail.errors?.minlength" class="text-danger">Email should be min lenght of 5</small>
+                                                  <small *ngIf="reqemail.errors?.email" class="text-danger">Filled in email format only</small>
+                                                  <small *ngIf="reqemail.errors?.forbiddenname" class="text-danger">This name is not allowed</small>
+                                            </div>                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" name="phoneno" class="form-control" placeholder="Your Phone *" value=""  formControlName="phone" [class.is-invalid]="validation(phone.errors?.phoneval) && phone.touched"/>
+                                            <!-- <small [class.d-none]="phone.valid || phone.touched" class="text-danger">Number should be upto 10 digits</small> -->
+                                            <!-- <small [class.d-none]="phone.valid || phone.untouched" class="text-danger">Number field should be filled</small>  -->
+                                            <div *ngIf="phone.invalid && phone.touched">
+                                                  <small *ngIf="phone.errors?.required" class="text-danger" >Number field should be filled</small> 
+                                                  <!-- <small *ngIf="!phone.errors?.pattern" class="text-danger">Number Digits should be 10</small>  -->
+                                                  <small *ngIf="validation(phone.errors?.phoneval)" class="text-danger">Number Digits should be 10</small> 
+                                            </div>                                        
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Enter Your Answer *" value="" />
+                                    </div>
+                                    <input type="submit" class="btnRegister"  value="Register" />
+                                    <input type="submit" class="btnRegister"  value="Auto Fill"  (click)="reload()"  />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+
+            <!-- <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <h3  class="register-heading">Apply as a Auditi</h3>
+                <div class="row register-form">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="First Name *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Phone Number*" value="" />
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
+                        </div>
+                        <div class="form-group">
+                        </div>
+                        <input type="submit" class="btnRegister"  value="Register"/>
+                    </div>
+                </div>
+            </div> -->

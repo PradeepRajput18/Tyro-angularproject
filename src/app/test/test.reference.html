@@ -1,0 +1,118 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<form [formGroup]="testsgroup">
+<div formArrayName="tests">
+  <div *ngFor="let loop of testsgroup.get('tests').controls;index as i">
+    <!-- <div *ngFor="let question of ques;let i=index"> -->
+
+  <hr *ngIf="i>0">
+  <form [formGroupName]="i">
+    <!-- ;let loop of testsgroup.get('tests').controls -->
+                
+                  <div class="card">
+                    <div class="card-header" id="headingOne">
+                      <!-- <h5 class="mb-0"> -->
+                        <button class="btn btn-link btn-acrd" > 
+                          <!-- data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" -->
+                            <!-- <i class="fas fa-plus"></i> -->
+                            <div class="display">
+                                <div class="float-left">{{i}}</div>
+                                <div class="float-left">.</div>
+                                <div class="float-right">{{questionset[i].question}}</div>
+                            </div> 
+                        </button>
+                      <!-- </h5> -->
+                    </div>
+                    <input type="text" name="checkbox1"  class="float-right" formControlName="input" [class.is-invalid]="loop.controls.input.invalid && loop.controls.input.touched">
+                            <small class="text-danger" [class.d-none]="loop.controls.input.valid || loop.controls.input.untouched">shuld be filled</small>
+                
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                      <div class="card-body">
+                        <input type="text" name="input"  class="float-right" formControlName="input" >
+                        <!-- [class.is-invalid]="testsgroup[i].get('input').invalid && testsgroup[i].get('input').touched" -->
+                            <!-- <small class="text-danger" [class.d-none]="input.valid || input.untouched">shuld be filled</small> -->
+                            
+                        
+                        <div class="float-md-right">
+                        <div class="display">
+                         
+                            <div class="float-left h6">1</div>
+                            <div class="float-left h6">.</div>
+                            <div class="float-right h6">{{questionset[i].op1}}</div>
+                            <input type="checkbox" name="checkbox1"  class="float-right" formControlName="checkbox1" >
+                            <!-- <span class="text-danger" *ngIf="loop.get('checkbox1').errors?.required && loop.get('checkbox1').touched">should be marked</span> -->
+                            <!-- [class.is-invalid]="control.get('checkbox1').invalid && control.get('checkbox1').touched"  -->
+                            <!-- [class.is-invalid]="control.controls.checkbox1.invalid && control.controls.checkbox1.touched" -->
+                            <!-- <small class="text-danger" [class.d-none]="testsgroup.get('checkbox1').valid || testsgroup.get('checkbox1').untouched">shuld be filled</small> -->
+                        </div> 
+                        <div class="display">
+                            <div class="float-left h6">2</div>
+                            <div class="float-left h6" >.</div>
+                            <div class="float-right h6">{{questionset[i].op2}}</div>
+                            <input type="checkbox" name="checkbox2"  class="float-right" formControlName="checkbox2">
+                        </div> 
+                        <div class="display">
+                            <div class="float-left h6">3</div>
+                            <div class="float-left h6">.</div>
+                            <div class="float-right h6">{{questionset[i].op3}}</div>
+                            <input type="checkbox" name="checkbox3"  class="float-right" formControlName="checkbox3">
+                        </div> 
+                        <div class="display">
+                            <div class="float-left h6">4</div>
+                            <div class="float-left h6">.</div>
+                            <div class="float-right h6">{{questionset[i].op4}}</div>
+                            <input type="checkbox" name="checkbox4"  class="float-right float-bottom" formControlName="checkbox4">
+                        </div>
+                        <!-- error -->
+                          <!-- <small class="text-danger" [class.d-none]="/">Select any one of it only</small> -->
+                      </div> 
+                      </div>
+                    </div>
+                  </div>
+                
+                
+                
+                  <!-- seperate for this one  -->
+                  <div class="card">
+                    <div class="card-header" id="headingTwo">
+                      <h5 class="mb-0">
+                      <button type="button" class="btn text-success bg-warning" name="submit" (click)="fillup()"> 
+                        <!-- data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" -->
+                            submit
+                        </button>
+                      </h5>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header" id="headingThree">
+                      <h5 class="mb-0">
+                        <button class="btn  float-left text-info bg-secondary"> 
+                          <!-- data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" -->
+                            prev
+                        </button>
+                        <button type="button" class="btn  float-right text-info bg-secondary"  (click)="addquestions()" > 
+                          <!-- [disabled]="loop.get('tests').invalid" -->
+                            next
+                        </button>
+                        <!-- <div formArrayName="questions" *ngFor="let quest of question.controls; let i=index">
+                          <div type="text"  value="" [formControlName]="i" class="form-control my-1">
+                          {{i}} {{quest.value}}
+                          </div>
+                        </div> -->
+                      </h5>
+                    </div>
+                  </div>
+  </form>
+<!-- </div>                -->
+
+</div>                    
+</div>
+</form>
+
+
+<!-- <h1>hhhhhhhhhhhhhhhhhhhhhhhhhh</h1> -->
+<!-- <div *ngFor="let question of ques">
+
+<div class="float-right">{{question.question}}</div></div> -->

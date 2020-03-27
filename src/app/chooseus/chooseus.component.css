@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/* input[type="checkbox"]{
+    position: fixed;
+    z-index: 1;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+input[type="checkbox"]:checked:before{
+    content: light;
+    color: #000;
+    background: #fff;
+}
+input[type="checkbox"]:checked~*{
+    filter: invert(1);
+}
+input[type="checkbox"]:before{
+    content: dark;
+    position: absolute;
+    color: #fff;
+    background: #000;
+    padding: 10px 20px;
+} */
+.h2{
+    font-family: "GothamSSm Book", Arial, sans-serif
+    ;
+}
+.welcome{
+    margin-top: 3%;
+    height: 500px;
+    width: fit-content;
+}
+.welcomes{
+    float: right;
+    margin-top: 14%;
+    color: #7B51FF;
+    margin-right: 4%;
+}
+.size{
+    height: 400px;
+    width: fit-content;
+}
+.pos{
+    margin-top: 4%;
+}
+.pos1{
+    float: left;
+    margin-left: -9%;
+}
+.pos2{
+    float: right;
+    margin-right: -14%;
+    margin-top: -25%;
+
+}
+.pos3{
+    float: left;
+    margin-left: -9%;
+}
+.pos4{
+    float: right;
+    margin-right: -11%;
+    margin-top: -25%;
+}
+.pos5{
+    float: left;
+    margin-top: -40%;
+    margin-left: 11%;
+    text-align: center;
+    opacity: 0;
+    color: white;
+}
+.pos6{
+    /* float: right; */
+    margin-top: 15%;
+    margin-left: 46%;
+    text-align: center;
+    opacity: 0;
+    color: #FFC107;
+
+}
+.pos7{
+    float: left;
+    margin-top: -10%;
+    margin-left: 9%;
+    text-align: center;
+    opacity: 0;
+    color: #FFC107;
+
+}
+.pos8{
+    /* float: right; */
+    margin-left: 30%;
+    margin-top: 24%;
+    text-align: center;
+    opacity: 0;
+}
+
+.animate:hover {
+    opacity: 1;
+}

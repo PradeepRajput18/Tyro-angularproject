@@ -1,0 +1,61 @@
+#Nossas-Areas .item {
+    
+    border-bottom-style: solid;
+    border-bottom-color: #32c69a;
+    
+    overflow-y: hidden;
+}
+
+#accordion2 {
+    margin-top: 5%;
+    background-color:#F4F8FB
+  
+}
+#accordion2 .h2{
+    
+   
+    font-size: 27px;
+    text-transform: uppercase;
+    color: black;
+        font-family: 'Open Sans', sans-serif;
+    
+}
+#accordion2 .h5 {
+    font-size: 17px;
+    text-transform: uppercase;
+    color: gray;
+      font-family: 'Montserrat', sans-serif;
+}
+
+#accordion {
+    
+     
+     background-color:#F4F8FB;
+}
+
+
+.card-header {
+    border: none;
+  
+    background-color: white;
+}
+
+.btn-acrd {
+    
+    color: black;
+    font-weight: 700;
+}
+
+.fa-plus {
+    font-size: 15px;
+    color: #32c69a;
+}
+
+.display{
+    display: inline-block;
+}
+
+hr{
+   color: #32c69a;
+   border: 5px solid silver;
+}
